@@ -1,0 +1,855 @@
+<html>
+  <head>
+    <title>Dataset for the DIssemination of REgistered COVID-19 Clinical Trials (DIRECCT) Study</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="application/ld+json">
+      {
+  "@context": "http://schema.org",
+  "type": "Dataset",
+  "name": "Dataset for the DIssemination of REgistered COVID-19 Clinical Trials (DIRECCT) Study",
+  "creator": [
+    {
+      "type": "Person",
+      "id": "0000-0003-1934-9504",
+      "email": "maia.salholz-hillel@charite.de",
+      "affiliation": "QUEST Center for Transforming Biomedical Research, Berlin Institute of Health (BIH) at Charité – Universitätsmedizin Berlin, Berlin, Germany",
+      "name": "Maia Salholz-Hillel"
+    },
+    {
+      "type": "Person",
+      "id": "0000-0001-8286-1995",
+      "email": "nicholas.devito@phc.ox.ac.uk",
+      "affiliation": "The DataLab, Nuffield Department of Primary Care Health Sciences, University of Oxford, Oxford, United Kingdom",
+      "name": "Nicholas J. DeVito"
+    },
+    {
+      "type": "Person",
+      "id": "0000-0001-5658-2482",
+      "email": null,
+      "affiliation": "QUEST Center for Transforming Biomedical Research, Berlin Institute of Health (BIH) at Charité – Universitätsmedizin Berlin, Berlin, Germany",
+      "name": "Peter Grabitz"
+    }
+  ],
+  "description": "The DIRECCT study is a multi-phase, living examination of clinical trial results dissemination throughout the COVID-19 pandemic. This dataset contains `trials`, `registrations`, and `results` from Phase 1 of the project, examining trials completed during the first six months of the pandemic (i.e., through 30 June 2020). This dataset is provided as a relational database of three CSVs which can joined on the `id` column. Data was collected using a combination of automated and manual strategies; automated searches were performed on 30 June 2020, and manual searches were performed between 21 October 2020 and 18 January 2021. Data sources for `trials` and `registrations` include the World Health Organization (WHO) International Clinical Trials Registry Platform (ICTRP) list of registered COVID-19 studies, individual clinical trial registries, and the COVID-19 TrialsTracker (https://covid19.trialstracker.net/). Data sources for `results` include COVID-19 Open Research Dataset Challenge (CORD-19), PubMed, EuropePMC, Google Scholar, and Google. Additional information on the project is available at the project's OSF page: http://doi.org/10.17605/osf.io/5f8j2",
+  "datePublished": null,
+  "keywords": ["clinical trials", "results reporting", "COVID-19"],
+  "funder": "German Bundesministerium für Bildung und Forschung (BMBF)",
+  "temporalCoverage": "2020-01-01/2020-06-30",
+  "license": null,
+  "spatialCoverage": {
+    "type": "Place",
+    "name": null,
+    "geo": {
+      "type": "GeoShape",
+      "box": "0 0 0 0"
+    }
+  },
+  "variableMeasured": [
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "id",
+      "description": "{trials, registrations, results} Unique trial identifier"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "numeric",
+      "name": "n_trn",
+      "description": "{registrations} Count of trial registration numbers for a trial"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "source",
+      "description": "{registrations} Source of trial registration number: `ictrp` (i.e., WHO ICTRP), `auto` (i.e., found via automated searches on registry or in Trials Tracker), `reg` (i.e., found on registry via manual search)"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "trn",
+      "description": "{registrations} Trial registration number"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "registry",
+      "description": "{registrations} Clinical trial registry"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "trn",
+      "description": "{results} Trial registration number if result associated with trial NOT in dataset. `no TRN found` if no trn reported in result. `see trials` if result associated with trial in dataset."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "search_type",
+      "description": "{results} Type of search used to find result: `results_check` (automated results search in CORD-19 and PubMed), `registry` (summary result or publication citation on registry), `trn` (search engine query using TRN), `keywords` (search engine query using trial keywords)"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "pub_type",
+      "description": "{results} Publication type. Full results report complete results of the primary outcome(s) for all participants. All other results are interim: `full_results_preprint`, `full_results_journal_article`, `interim_results_journal_article`, `other` (includes protocols, conference abstracts, posters, and presentations, grey literature), `summary_results` (i.e., registry results), `interim_results_preprint`, `interim_result`"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "search_engine",
+      "description": "{results} Search engine. If `search_type` is `trn` or `keywords`, which search engine was used to find the result: `pubmed`, `europe_pmc`, `google_scholar`, `google`"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "doi",
+      "description": "{results} Publication DOI"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "numeric",
+      "name": "pmid",
+      "description": "{results} Publication PubMed id"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "cord_id",
+      "description": "{results} Publication CORD-19 id. Sparsely used. May be removed in future dataset versions."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "url",
+      "description": "{results} Publication URL"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "date_publication",
+      "description": "{results} Trial publication date. Earliest available, including online-first."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "date_completion",
+      "description": "{results} Trial completion date (last patient, last visit), if reported in the publication."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "comments",
+      "description": "{results} Comments on results from manual data extraction."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "trialid",
+      "description": "{trials} Preferred trial registration number from input ICTRP dataset after TrialsTracker pre-processing."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "source_register",
+      "description": "{trials} Preferred trial registry from input ICTRP dataset after TrialsTracker pre-processing."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "date_registration",
+      "description": "{trials} Trial registration date, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "date_enrollement",
+      "description": "{trials} Trial first enrollment date, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "retrospective_registration",
+      "description": "{trials} Whether trial was registered retrospectively, per ICTRP after TrialsTracker pre-processing."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "normed_spon_names",
+      "description": "{trials} Normed sponsor names, , per ICTRP after TrialsTracker pre-processing."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "recruitment_status",
+      "description": "{trials} Recruitment status, per ICTRP: `Authorised`, `Not Recruiting`, `Recruiting`, `No Status Given`"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "phase",
+      "description": "{trials} Phase, per ICTRP: `Phase 1`, `Phase 1/Phase 2`, `Phase 2`, `Phase 2/Phase 3`, `Phase 3`, `Phase 3/Phase 4`, `Phase 4`, `Not Applicable`"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "study_type",
+      "description": "{trials} Study type, per ICTRP: `Interventional`, `Prevention`, `Observational`, `Diagnostic test`, `Prognosis`, `Basic Science`, `Epidemiological research`, `Health services research`, `Screening`, `Expanded Access`, `Other`, `Unknown`. Only `Interventional` and `Prevention` considered clinical trials."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "countries",
+      "description": "{trials} Countries, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "public_title",
+      "description": "{trials} Trial title, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "study_category",
+      "description": "{trials} Study category, per ICTRP. 39 categories."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "intervention",
+      "description": "{trials} Trial intervention, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "intervention_list",
+      "description": "{trials} Trial intervention list, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "numeric",
+      "name": "target_enrollment",
+      "description": "{trials} Trial target enrollment, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "web_address",
+      "description": "{trials} Trial registration URL, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "categorical",
+      "name": "trial_status",
+      "description": "{trials} Trial status list, per ICTRP."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "registry_scraped",
+      "description": "{trials} Whether registry scraped. NA for non-trials. TRUE for trials. No FALSE in first phase."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "pcd_auto",
+      "description": "{trials} Primary completion date, per registry during automated screening, if available."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "scd_auto",
+      "description": "{trials} Study completion date, per registry during automated screening, if available."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "rcd_auto",
+      "description": "{trials} Relevant completion date, based on automated screening. Used for our trial automated screening criteria. `scd_auto` if available, otherwise `pcd_auto`, otherwise NA."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "tabular_results",
+      "description": "{trials} Whether summary results posted for ClinicalTrial.gov trials. NA is `source_register` is NOT ClinicalTrial.gov. 0 indicates FALSE. No summary results detected in first phase."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "potential_other_results",
+      "description": "{trials} Whether publication citations posted for ClinicalTrial.gov trials. NA is `source_register` is NOT ClinicalTrial.gov. 0 indicates FALSE. 1 indicates TRUE."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "has_auto_reg_results_cutoff_1",
+      "description": "{trials} Whether `tabular_results` or `potential_other_results` detected on registry in automated screening."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_intervention",
+      "description": "{trials} Whether ICTRP `study_type` is `Interventional` or `Prevention`. Used for our trial automated screening criteria."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_reg_2020",
+      "description": "{trials} Whether ICTRP `date_registration` is as of 2020-01-01. Used for our trial automated screening criteria."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_not_withdrawn",
+      "description": "{trials} Whether not indicated as withdrawn in either ICTRP or registry during automated screening. Used for our trial automated screening criteria."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_eligible_study",
+      "description": "{trials} Whether eligible for manual screening for our study. Based on `is_intervention`, `is_reg_2020`, and `is_not_withdrawn`."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_rcd_cutoff_1",
+      "description": "{trials} Whether `rcd_auto` on or before phase 1 cutoff of 2020-06-30"
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_searched_cutoff_1",
+      "description": "{trials} Whether included in phase 1 manual search. Based on `is_eligible_study` and either `is_rcd_cutoff_1` or `has_auto_reg_results_cutoff_1`."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_clinical_trial_manual",
+      "description": "{trials} Whether a clinical trial, per manual screening."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_covid_manual",
+      "description": "{trials} Whether the primary outcome of the clinical trial is the treatment or prevention of COVID-19/SARS-COV-2, per manual screening."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_not_withdrawn_manual",
+      "description": "{trials} Whether not indicated as withdrawn on registry during manual screening."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "pcd_manual",
+      "description": "{trials} Primary completion date, per registry during manual screening, if available."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "scd_manual",
+      "description": "{trials} Study completion date, per registry during manual screening, if available."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "date",
+      "name": "rcd_manual",
+      "description": "{trials} Relevant completion date, based on manual screening."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_rcd_cutoff_1_manual",
+      "description": "{trials} Whether `rcd_manual` on or before phase 1 cutoff of 2020-06-30."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "comments",
+      "description": "{trials} Comments on trials from manual data extraction."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_analysis_pop_cutoff_1",
+      "description": "{trials} Whether included in phase 1 analysis population. Based on `is_eligible_study`, `is_rcd_cutoff_1`, and manual screening (`is_clinical_trial_manual`, `is_covid_manual`, and `is_not_withdrawn_manual`)."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "logical",
+      "name": "is_dupe",
+      "description": "{trials} Whether trial is a duplicate in our dataset. Duplicates determined based on cross-registrations found in manual search. 18 duplicates found in phase 1 and excluded from analysis."
+    },
+    {
+      "type": "PropertyValue",
+      "unitText": "character",
+      "name": "dupe_primary",
+      "description": "{trials} If trial `is_dupe`, `id` of primary trial."
+    }
+  ],
+  "distribution": [
+    {
+      "type": "DataDownload",
+      "name": "registrations",
+      "contentUrl": "https://raw.githubusercontent.com/maia-sh/direcct/master/data/reporting/registrations.csv",
+      "encodingFormat": "csv"
+    },
+    {
+      "type": "DataDownload",
+      "name": "results",
+      "contentUrl": "https://raw.githubusercontent.com/maia-sh/direcct/master/data/reporting/results.csv",
+      "encodingFormat": "csv"
+    },
+    {
+      "type": "DataDownload",
+      "name": "trials",
+      "contentUrl": "https://raw.githubusercontent.com/maia-sh/direcct/master/data/reporting/trials.csv",
+      "encodingFormat": "csv"
+    }
+  ]
+}
+
+    </script>
+    <style>
+      body {
+        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        margin: 0 auto;
+        padding: 1rem;
+        max-width: 800px;
+      }
+
+      #map {
+        height: 20rem;
+      }
+
+      #attributes-wrapper,
+      #jsonld-wrapper {
+        height: 20rem;
+        overflow-y: scroll;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      th {
+        border-bottom: 1px solid black;
+      }
+
+      th, td {
+        padding: 0.25rem;
+      }
+
+      table.listing td {
+        border: 1px solid #CCC;
+      }
+
+      table.listing tr td:first-child {
+          background-color: #EEE;
+      }
+
+      table.listing ul {
+        margin: 0 0 0 1.5rem;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dataset for the DIssemination of REgistered COVID-19 Clinical Trials (DIRECCT) Study</h1>
+    <p><strong>Description:</strong> The DIRECCT study is a multi-phase, living examination of clinical trial results dissemination throughout the COVID-19 pandemic. This dataset contains `trials`, `registrations`, and `results` from Phase 1 of the project, examining trials completed during the first six months of the pandemic (i.e., through 30 June 2020). This dataset is provided as a relational database of three CSVs which can joined on the `id` column. Data was collected using a combination of automated and manual strategies; automated searches were performed on 30 June 2020, and manual searches were performed between 21 October 2020 and 18 January 2021. Data sources for `trials` and `registrations` include the World Health Organization (WHO) International Clinical Trials Registry Platform (ICTRP) list of registered COVID-19 studies, individual clinical trial registries, and the COVID-19 TrialsTracker (https://covid19.trialstracker.net/). Data sources for `results` include COVID-19 Open Research Dataset Challenge (CORD-19), PubMed, EuropePMC, Google Scholar, and Google. Additional information on the project is available at the project's OSF page: http://doi.org/10.17605/osf.io/5f8j2</p>
+
+    <h2>Bibliographic</h2>
+
+    <table class="listing">
+      <tr>
+        <td>Published</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Keywords</td>
+        <td>
+          <ul>
+            <li>clinical trials</li>
+            <li>results reporting</li>
+            <li>COVID-19</li>
+        </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Funder</td>
+        <td>German Bundesministerium für Bildung und Forschung (BMBF)</td>
+      </tr>
+      <tr>
+        <td>License</td>
+        <td></td>
+      </tr>
+    </table>
+
+    <h2>Coverage</h2>
+
+    <h3>Temporal</h3>
+
+    <table class="listing">
+      <tr>
+        <td>Begin</td>
+        <td>2020-01-01</td>
+      </tr>
+      <tr>
+        <td>End</td>
+        <td>2020-06-30</td>
+      </tr>
+    </table>
+
+    <h3>Spatial</h3>
+    <pre><code></code></pre>
+    <div id="map"></div>
+
+    <h2>Attributes</h2>
+
+    <div id="attributes-wrapper">
+      <table id="attributes">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>id</code></td>
+            <td>{trials, registrations, results} Unique trial identifier</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>n_trn</code></td>
+            <td>{registrations} Count of trial registration numbers for a trial</td>
+            <td>numeric</td>
+          </tr>
+          <tr>
+            <td><code>source</code></td>
+            <td>{registrations} Source of trial registration number: `ictrp` (i.e., WHO ICTRP), `auto` (i.e., found via automated searches on registry or in Trials Tracker), `reg` (i.e., found on registry via manual search)</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>trn</code></td>
+            <td>{registrations} Trial registration number</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>registry</code></td>
+            <td>{registrations} Clinical trial registry</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>trn</code></td>
+            <td>{results} Trial registration number if result associated with trial NOT in dataset. `no TRN found` if no trn reported in result. `see trials` if result associated with trial in dataset.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>search_type</code></td>
+            <td>{results} Type of search used to find result: `results_check` (automated results search in CORD-19 and PubMed), `registry` (summary result or publication citation on registry), `trn` (search engine query using TRN), `keywords` (search engine query using trial keywords)</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>pub_type</code></td>
+            <td>{results} Publication type. Full results report complete results of the primary outcome(s) for all participants. All other results are interim: `full_results_preprint`, `full_results_journal_article`, `interim_results_journal_article`, `other` (includes protocols, conference abstracts, posters, and presentations, grey literature), `summary_results` (i.e., registry results), `interim_results_preprint`, `interim_result`</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>search_engine</code></td>
+            <td>{results} Search engine. If `search_type` is `trn` or `keywords`, which search engine was used to find the result: `pubmed`, `europe_pmc`, `google_scholar`, `google`</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>doi</code></td>
+            <td>{results} Publication DOI</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>pmid</code></td>
+            <td>{results} Publication PubMed id</td>
+            <td>numeric</td>
+          </tr>
+          <tr>
+            <td><code>cord_id</code></td>
+            <td>{results} Publication CORD-19 id. Sparsely used. May be removed in future dataset versions.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>url</code></td>
+            <td>{results} Publication URL</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>date_publication</code></td>
+            <td>{results} Trial publication date. Earliest available, including online-first.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>date_completion</code></td>
+            <td>{results} Trial completion date (last patient, last visit), if reported in the publication.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>comments</code></td>
+            <td>{results} Comments on results from manual data extraction.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>trialid</code></td>
+            <td>{trials} Preferred trial registration number from input ICTRP dataset after TrialsTracker pre-processing.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>source_register</code></td>
+            <td>{trials} Preferred trial registry from input ICTRP dataset after TrialsTracker pre-processing.</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>date_registration</code></td>
+            <td>{trials} Trial registration date, per ICTRP.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>date_enrollement</code></td>
+            <td>{trials} Trial first enrollment date, per ICTRP.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>retrospective_registration</code></td>
+            <td>{trials} Whether trial was registered retrospectively, per ICTRP after TrialsTracker pre-processing.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>normed_spon_names</code></td>
+            <td>{trials} Normed sponsor names, , per ICTRP after TrialsTracker pre-processing.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>recruitment_status</code></td>
+            <td>{trials} Recruitment status, per ICTRP: `Authorised`, `Not Recruiting`, `Recruiting`, `No Status Given`</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>phase</code></td>
+            <td>{trials} Phase, per ICTRP: `Phase 1`, `Phase 1/Phase 2`, `Phase 2`, `Phase 2/Phase 3`, `Phase 3`, `Phase 3/Phase 4`, `Phase 4`, `Not Applicable`</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>study_type</code></td>
+            <td>{trials} Study type, per ICTRP: `Interventional`, `Prevention`, `Observational`, `Diagnostic test`, `Prognosis`, `Basic Science`, `Epidemiological research`, `Health services research`, `Screening`, `Expanded Access`, `Other`, `Unknown`. Only `Interventional` and `Prevention` considered clinical trials.</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>countries</code></td>
+            <td>{trials} Countries, per ICTRP.</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>public_title</code></td>
+            <td>{trials} Trial title, per ICTRP.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>study_category</code></td>
+            <td>{trials} Study category, per ICTRP. 39 categories.</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>intervention</code></td>
+            <td>{trials} Trial intervention, per ICTRP.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>intervention_list</code></td>
+            <td>{trials} Trial intervention list, per ICTRP.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>target_enrollment</code></td>
+            <td>{trials} Trial target enrollment, per ICTRP.</td>
+            <td>numeric</td>
+          </tr>
+          <tr>
+            <td><code>web_address</code></td>
+            <td>{trials} Trial registration URL, per ICTRP.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>trial_status</code></td>
+            <td>{trials} Trial status list, per ICTRP.</td>
+            <td>categorical</td>
+          </tr>
+          <tr>
+            <td><code>registry_scraped</code></td>
+            <td>{trials} Whether registry scraped. NA for non-trials. TRUE for trials. No FALSE in first phase.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>pcd_auto</code></td>
+            <td>{trials} Primary completion date, per registry during automated screening, if available.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>scd_auto</code></td>
+            <td>{trials} Study completion date, per registry during automated screening, if available.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>rcd_auto</code></td>
+            <td>{trials} Relevant completion date, based on automated screening. Used for our trial automated screening criteria. `scd_auto` if available, otherwise `pcd_auto`, otherwise NA.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>tabular_results</code></td>
+            <td>{trials} Whether summary results posted for ClinicalTrial.gov trials. NA is `source_register` is NOT ClinicalTrial.gov. 0 indicates FALSE. No summary results detected in first phase.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>potential_other_results</code></td>
+            <td>{trials} Whether publication citations posted for ClinicalTrial.gov trials. NA is `source_register` is NOT ClinicalTrial.gov. 0 indicates FALSE. 1 indicates TRUE.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>has_auto_reg_results_cutoff_1</code></td>
+            <td>{trials} Whether `tabular_results` or `potential_other_results` detected on registry in automated screening.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_intervention</code></td>
+            <td>{trials} Whether ICTRP `study_type` is `Interventional` or `Prevention`. Used for our trial automated screening criteria.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_reg_2020</code></td>
+            <td>{trials} Whether ICTRP `date_registration` is as of 2020-01-01. Used for our trial automated screening criteria.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_not_withdrawn</code></td>
+            <td>{trials} Whether not indicated as withdrawn in either ICTRP or registry during automated screening. Used for our trial automated screening criteria.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_eligible_study</code></td>
+            <td>{trials} Whether eligible for manual screening for our study. Based on `is_intervention`, `is_reg_2020`, and `is_not_withdrawn`.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_rcd_cutoff_1</code></td>
+            <td>{trials} Whether `rcd_auto` on or before phase 1 cutoff of 2020-06-30</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_searched_cutoff_1</code></td>
+            <td>{trials} Whether included in phase 1 manual search. Based on `is_eligible_study` and either `is_rcd_cutoff_1` or `has_auto_reg_results_cutoff_1`.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_clinical_trial_manual</code></td>
+            <td>{trials} Whether a clinical trial, per manual screening.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_covid_manual</code></td>
+            <td>{trials} Whether the primary outcome of the clinical trial is the treatment or prevention of COVID-19/SARS-COV-2, per manual screening.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_not_withdrawn_manual</code></td>
+            <td>{trials} Whether not indicated as withdrawn on registry during manual screening.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>pcd_manual</code></td>
+            <td>{trials} Primary completion date, per registry during manual screening, if available.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>scd_manual</code></td>
+            <td>{trials} Study completion date, per registry during manual screening, if available.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>rcd_manual</code></td>
+            <td>{trials} Relevant completion date, based on manual screening.</td>
+            <td>date</td>
+          </tr>
+          <tr>
+            <td><code>is_rcd_cutoff_1_manual</code></td>
+            <td>{trials} Whether `rcd_manual` on or before phase 1 cutoff of 2020-06-30.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>comments</code></td>
+            <td>{trials} Comments on trials from manual data extraction.</td>
+            <td>character</td>
+          </tr>
+          <tr>
+            <td><code>is_analysis_pop_cutoff_1</code></td>
+            <td>{trials} Whether included in phase 1 analysis population. Based on `is_eligible_study`, `is_rcd_cutoff_1`, and manual screening (`is_clinical_trial_manual`, `is_covid_manual`, and `is_not_withdrawn_manual`).</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>is_dupe</code></td>
+            <td>{trials} Whether trial is a duplicate in our dataset. Duplicates determined based on cross-registrations found in manual search. 18 duplicates found in phase 1 and excluded from analysis.</td>
+            <td>logical</td>
+          </tr>
+          <tr>
+            <td><code>dupe_primary</code></td>
+            <td>{trials} If trial `is_dupe`, `id` of primary trial.</td>
+            <td>character</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Distribution</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Format</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>registrations</code></td>
+          <td><code>csv</code></td>
+          <td><a href="https://raw.githubusercontent.com/maia-sh/direcct/master/data/reporting/registrations.csv">Download</a></td>
+        </tr>
+        <tr>
+          <td><code>results</code></td>
+          <td><code>csv</code></td>
+          <td><a href="https://raw.githubusercontent.com/maia-sh/direcct/master/data/reporting/results.csv">Download</a></td>
+        </tr>
+        <tr>
+          <td><code>trials</code></td>
+          <td><code>csv</code></td>
+          <td><a href="https://raw.githubusercontent.com/maia-sh/direcct/master/data/reporting/trials.csv">Download</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+    <script>
+      var mymap = L.map('map').setView([0, 0], 1);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 18,
+      }).addTo(mymap);
+
+      var polygon = L.polygon([[ 0, 0], [ 0, 0], [ 0, 0], [ 0, 0]]).addTo(mymap);
+    </script>
+  </body>
+</html>
