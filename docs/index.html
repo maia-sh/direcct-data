@@ -169,13 +169,13 @@
       "type": "PropertyValue",
       "unitText": "logical",
       "name": "retrospective_registration",
-      "description": "{trials} Whether trial was registered retrospectively, per ICTRP after TrialsTracker pre-processing."
+      "description": "{trials} Whether trial was registered retrospectively, per ICTRP after TrialsTracker pre-processing. Not necessarily the same as \"Retrospective flag\" on the ICTRP."
     },
     {
       "type": "PropertyValue",
       "unitText": "character",
       "name": "normed_spon_names",
-      "description": "{trials} Normed sponsor names, , per ICTRP after TrialsTracker pre-processing."
+      "description": "{trials} Normed sponsor names, derived from the ICTRP."
     },
     {
       "type": "PropertyValue",
@@ -187,13 +187,13 @@
       "type": "PropertyValue",
       "unitText": "categorical",
       "name": "phase",
-      "description": "{trials} Phase, per ICTRP: `Phase 1`, `Phase 1/Phase 2`, `Phase 2`, `Phase 2/Phase 3`, `Phase 3`, `Phase 3/Phase 4`, `Phase 4`, `Not Applicable`"
+      "description": "{trials} Phase, per ICTRP. Normalized in TrialsTracker pre-processing: `Phase 1`, `Phase 1/Phase 2`, `Phase 2`, `Phase 2/Phase 3`, `Phase 3`, `Phase 3/Phase 4`, `Phase 4`, `Not Applicable`."
     },
     {
       "type": "PropertyValue",
       "unitText": "categorical",
       "name": "study_type",
-      "description": "{trials} Study type, per ICTRP: `Interventional`, `Prevention`, `Observational`, `Diagnostic test`, `Prognosis`, `Basic Science`, `Epidemiological research`, `Health services research`, `Screening`, `Expanded Access`, `Other`, `Unknown`. Only `Interventional` and `Prevention` considered clinical trials."
+      "description": "{trials} Study type, per ICTRP. Normalized in TrialsTracker pre-processing: `Interventional`, `Prevention`, `Observational`, `Diagnostic test`, `Prognosis`, `Basic Science`, `Epidemiological research`, `Health services research`, `Screening`, `Expanded Access`, `Other`, `Unknown`. Only `Interventional` and `Prevention` considered clinical trials."
     },
     {
       "type": "PropertyValue",
@@ -211,25 +211,25 @@
       "type": "PropertyValue",
       "unitText": "categorical",
       "name": "study_category",
-      "description": "{trials} Study category, per ICTRP. 39 categories."
+      "description": "{trials} Category of intervention or topic of study, based on TrialsTracker schema. Not systematically extracted to date: 39 categories."
     },
     {
       "type": "PropertyValue",
       "unitText": "character",
       "name": "intervention",
-      "description": "{trials} Trial intervention, per ICTRP."
+      "description": "{trials} Trial interventions, extracted from ICTRP data for TrialsTracker. Not systematically extracted to date."
     },
     {
       "type": "PropertyValue",
       "unitText": "character",
       "name": "intervention_list",
-      "description": "{trials} Trial intervention list, per ICTRP."
+      "description": "{trials} List of all unique intervention in trial, seperated by a \";\", derived from ICTRP."
     },
     {
       "type": "PropertyValue",
       "unitText": "numeric",
       "name": "target_enrollment",
-      "description": "{trials} Trial target enrollment, per ICTRP."
+      "description": "{trials} Trial target enrollment, extracted and cleaned automatically from ICTRP."
     },
     {
       "type": "PropertyValue",
@@ -241,7 +241,7 @@
       "type": "PropertyValue",
       "unitText": "categorical",
       "name": "trial_status",
-      "description": "{trials} Trial status list, per ICTRP."
+      "description": "{trials} Trial status, per registry during automated screening, if available. Takes the form of a list for the EUCTR to account for multiple protocols."
     },
     {
       "type": "PropertyValue",
@@ -271,7 +271,7 @@
       "type": "PropertyValue",
       "unitText": "logical",
       "name": "tabular_results",
-      "description": "{trials} Whether summary results posted for ClinicalTrial.gov trials. NA is `source_register` is NOT ClinicalTrial.gov. 0 indicates FALSE. No summary results detected in first phase."
+      "description": "{trials} Whether summary results posted for ClinicalTrial.gov or EUCTR trials. NA is `source_register` is NOT ClinicalTrial.gov or EUCTR. 0 indicates FALSE. No summary results detected in first phase."
     },
     {
       "type": "PropertyValue",
@@ -620,12 +620,12 @@
           </tr>
           <tr>
             <td><code>retrospective_registration</code></td>
-            <td>{trials} Whether trial was registered retrospectively, per ICTRP after TrialsTracker pre-processing.</td>
+            <td>{trials} Whether trial was registered retrospectively, per ICTRP after TrialsTracker pre-processing. Not necessarily the same as &quot;Retrospective flag&quot; on the ICTRP.</td>
             <td>logical</td>
           </tr>
           <tr>
             <td><code>normed_spon_names</code></td>
-            <td>{trials} Normed sponsor names, , per ICTRP after TrialsTracker pre-processing.</td>
+            <td>{trials} Normed sponsor names, derived from the ICTRP.</td>
             <td>character</td>
           </tr>
           <tr>
@@ -635,12 +635,12 @@
           </tr>
           <tr>
             <td><code>phase</code></td>
-            <td>{trials} Phase, per ICTRP: `Phase 1`, `Phase 1/Phase 2`, `Phase 2`, `Phase 2/Phase 3`, `Phase 3`, `Phase 3/Phase 4`, `Phase 4`, `Not Applicable`</td>
+            <td>{trials} Phase, per ICTRP. Normalized in TrialsTracker pre-processing: `Phase 1`, `Phase 1/Phase 2`, `Phase 2`, `Phase 2/Phase 3`, `Phase 3`, `Phase 3/Phase 4`, `Phase 4`, `Not Applicable`.</td>
             <td>categorical</td>
           </tr>
           <tr>
             <td><code>study_type</code></td>
-            <td>{trials} Study type, per ICTRP: `Interventional`, `Prevention`, `Observational`, `Diagnostic test`, `Prognosis`, `Basic Science`, `Epidemiological research`, `Health services research`, `Screening`, `Expanded Access`, `Other`, `Unknown`. Only `Interventional` and `Prevention` considered clinical trials.</td>
+            <td>{trials} Study type, per ICTRP. Normalized in TrialsTracker pre-processing: `Interventional`, `Prevention`, `Observational`, `Diagnostic test`, `Prognosis`, `Basic Science`, `Epidemiological research`, `Health services research`, `Screening`, `Expanded Access`, `Other`, `Unknown`. Only `Interventional` and `Prevention` considered clinical trials.</td>
             <td>categorical</td>
           </tr>
           <tr>
@@ -655,22 +655,22 @@
           </tr>
           <tr>
             <td><code>study_category</code></td>
-            <td>{trials} Study category, per ICTRP. 39 categories.</td>
+            <td>{trials} Category of intervention or topic of study, based on TrialsTracker schema. Not systematically extracted to date: 39 categories.</td>
             <td>categorical</td>
           </tr>
           <tr>
             <td><code>intervention</code></td>
-            <td>{trials} Trial intervention, per ICTRP.</td>
+            <td>{trials} Trial interventions, extracted from ICTRP data for TrialsTracker. Not systematically extracted to date.</td>
             <td>character</td>
           </tr>
           <tr>
             <td><code>intervention_list</code></td>
-            <td>{trials} Trial intervention list, per ICTRP.</td>
+            <td>{trials} List of all unique intervention in trial, seperated by a &quot;;&quot;, derived from ICTRP.</td>
             <td>character</td>
           </tr>
           <tr>
             <td><code>target_enrollment</code></td>
-            <td>{trials} Trial target enrollment, per ICTRP.</td>
+            <td>{trials} Trial target enrollment, extracted and cleaned automatically from ICTRP.</td>
             <td>numeric</td>
           </tr>
           <tr>
@@ -680,7 +680,7 @@
           </tr>
           <tr>
             <td><code>trial_status</code></td>
-            <td>{trials} Trial status list, per ICTRP.</td>
+            <td>{trials} Trial status, per registry during automated screening, if available. Takes the form of a list for the EUCTR to account for multiple protocols.</td>
             <td>categorical</td>
           </tr>
           <tr>
@@ -705,7 +705,7 @@
           </tr>
           <tr>
             <td><code>tabular_results</code></td>
-            <td>{trials} Whether summary results posted for ClinicalTrial.gov trials. NA is `source_register` is NOT ClinicalTrial.gov. 0 indicates FALSE. No summary results detected in first phase.</td>
+            <td>{trials} Whether summary results posted for ClinicalTrial.gov or EUCTR trials. NA is `source_register` is NOT ClinicalTrial.gov or EUCTR. 0 indicates FALSE. No summary results detected in first phase.</td>
             <td>logical</td>
           </tr>
           <tr>
